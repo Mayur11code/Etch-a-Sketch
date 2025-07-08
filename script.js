@@ -9,16 +9,22 @@ box.classList.add("box")
 let previousnumber = 16;
 grid(previousnumber);
 
+
 const button = Array.from(document.querySelectorAll("button"))
 console.log(button)
 let choice = '';
 
 
+let count = 0;
+let dict = {};
+intialize();
 
 button.forEach((item) => {
 
     item.addEventListener("click", () => {
         choice = item.getAttribute("class");
+        count = 0;
+        intialize();
 
 
 
@@ -32,6 +38,8 @@ button.forEach((item) => {
             else item.classList.remove("focusbutton")
 
         })
+
+
     })
 })
 
@@ -39,20 +47,27 @@ button.forEach((item) => {
 
 
 box.addEventListener("mouseover", (e) => {
-    
-    if (e.target.className == "gridbox" && (choice == '' || choice == "Bw")) {
 
-        
+
+
+    dict[e.target.className]++
+
+    console.log(dict)
+
+
+    if ((e.target.className.slice(0, 7)) == "gridbox" && (choice == '' || choice == "Bw")) {
+
+
         e.target.style.backgroundColor = "black";
     }
 
-    else if (e.target.className == "gridbox" && choice == ("rgb")) {
-        
+    else if (e.target.className.slice(0, 7) == "gridbox" && choice == ("rgb")) {
+
         e.target.style.backgroundColor = "red";
     }
 
-    else if (e.target.className == "gridbox" && choice == "Eraser") {
-        
+    else if (e.target.className.slice(0, 7) == "gridbox" && choice == "Eraser") {
+
         e.target.style.backgroundColor = "White";
     }
 
@@ -67,6 +82,7 @@ const select = document.querySelector("select");
 select.addEventListener("change", () => {
     let selected = select.value;
     grid(+selected);
+    intialize();
 
 })
 
@@ -80,19 +96,27 @@ select.addEventListener("change", () => {
 
 
 function opacity(e) {
-    if(e.target.className == "gridbox"){
-    let Ref = e.target
-    let prevstyle = Ref.getAttribute("Style")
-   
+
+    let a = e.target.className.slice(0,7);
+    if (a == "gridbox") {
 
 
-    let OpacityString = prevstyle.split(";").find((item) => {
-        return item.trim()[0] == "o"
-    })
-    let CurrentValue = +OpacityString.split(":")[1]
 
-    let Op = CurrentValue + 0.2;
-    e.target.style.opacity = Op;}
+        let Ref = e.target
+        let prevstyle = Ref.getAttribute("Style")
+
+
+
+        let OpacityString = prevstyle.split(";").find((item) => {
+            return item.trim()[0] == "o"
+        })
+
+        let correction = dict[e.target.className] == 1 ? -(OpacityString.split(":")[1]) : 0;
+        let CurrentValue = +OpacityString.split(":")[1] + correction;
+
+        let Op = CurrentValue + 0.2;
+        e.target.style.opacity = Op;
+    }
 }
 
 
@@ -113,8 +137,19 @@ function grid(number) {
         gridbox.setAttribute("Style", "border:1px solid black;box-sizing:border-box;flex:0 0 auto;" + "Opacity : 0.2")
         gridbox.style.height = calc + "px"
         gridbox.style.width = calc + "px"
-        gridbox.classList.add("gridbox")
+        gridbox.classList.add("gridbox", i)
         previousnumber = number;
 
     }
+}
+
+
+
+// FIXING OPACITY PROBLEM
+function intialize() {
+    const arr = Array.from(document.querySelectorAll(".gridbox"));
+    arr.forEach((item) => {
+        dict[item.className] = 0;
+
+    })
 }
