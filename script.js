@@ -25,6 +25,12 @@ button.forEach((item) => {
         choice = item.getAttribute("class");
         count = 0;
         intialize();
+        if (choice == "reset") {
+            // let no = select.value || 16;
+
+            // grid(+no);
+                location.reload(); //RELOADS THE PAGE [BETTER WAY]
+        }
 
 
 
@@ -62,8 +68,10 @@ box.addEventListener("mouseover", (e) => {
     }
 
     else if (e.target.className.slice(0, 7) == "gridbox" && choice == ("rgb")) {
-
-        e.target.style.backgroundColor = "red";
+        let red =Math.floor(Math.random()*256);
+        let blue =Math.floor(Math.random()*256);
+        let green=Math.floor(Math.random()*256);
+        e.target.style.backgroundColor = `rgb(${red},${blue},${green})`;
     }
 
     else if (e.target.className.slice(0, 7) == "gridbox" && choice == "Eraser") {
@@ -97,7 +105,7 @@ select.addEventListener("change", () => {
 
 function opacity(e) {
 
-    let a = e.target.className.slice(0,7);
+    let a = e.target.className.slice(0, 7);
     if (a == "gridbox") {
 
 
