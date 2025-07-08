@@ -5,11 +5,19 @@ body {
 }
 
 .sidebar {
+    padding: 29px;
+    font-family: poppins, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     box-sizing: border-box;
     width: 500px;
     border: 2px solid #000000;
     background-color: rgb(228, 228, 24);
     border-radius: 10px;
+
+
+}
+
+.sidebar,.sidebar button,.sidebar select {
+    cursor: url('main2.png'), auto;
 }
 
 .box {
@@ -17,6 +25,7 @@ body {
     border: 8px solid rebeccapurple;
     border-radius: 10px;
     background-color: rgb(255, 255, 255);
+    cursor: url('main.png'), auto;
 }
 
 
@@ -24,33 +33,54 @@ button {
     padding: 10px;
     border-radius: 5px;
     font-size: larger;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 800;
+    font-family: "poppins", 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     border: none;
     background-color: rgb(153, 200, 184);
-    margin: 11px 10px 10px 53px;
+    margin: 11px 10px 10px 17px;
     box-shadow: -1px 8px 5px 0px black;
 }
 
 
 button:hover {
+
     position: relative;
     top: 5px;
     box-shadow: none;
 }
-
+.input{
+    font-size: smaller;
+    background-color: azure;
+}
 .focusbutton {
     background-color: purple;
 }
 
-.size{
-    margin:50px 0 0 50px;
+.size {
+    margin: 50px 0 0 50px;
 }
 
-select{
+select {
+    font-family: poppins, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: x-large;
     padding: 25px;
-    border-radius:10px;
+    border-radius: 10px;
     background-color: rgba(236, 157, 97, 0.647);
     border: none;
 }
 
+
+.custom{
+    display: none;
+}
+
+fieldset{
+    margin: 17px 10px 10px -40px;
+    font-size: x-large;
+
+}
+
+input{
+    padding: 10px;
+    font-size: larger;}
+    
