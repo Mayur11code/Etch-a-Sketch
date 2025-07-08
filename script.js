@@ -1,7 +1,7 @@
 // DOM MANIPULATION FOR BASIC STRUCTURE
 const box = document.createElement("div")
 const body = document.querySelector("body")
-box.setAttribute("style", "display:flex; flex-wrap:wrap; width:700px;height:700px")
+box.setAttribute("style", "display:flex; flex-wrap:wrap; width:500px ; height:500px")
 body.appendChild(box)
 box.classList.add("box")
 
@@ -11,7 +11,7 @@ let previousnumber = 16;
 grid(previousnumber);
 
 // COMMON VARIABLES TO BE USED BY VARIOUS FUNCTIONS
-let choice;
+let choice = '';
 let count = 0;
 let dict = {};//KEEPS THE COUNT OF MOUSEOVERS PER GRIDBOX
 const button = Array.from(document.querySelectorAll("button"))
@@ -147,12 +147,12 @@ function grid(number) {
         })
     }
 
-    let calc = 700 / (+number);
+    let calc = 500 / (+number);
     for (i = 1; i <= (number * number); i++) {
         const gridbox = document.createElement("div")
         box.appendChild(gridbox);
         // gridbox.textContent=i;
-        gridbox.setAttribute("Style", "border:1px solid black;box-sizing:border-box;flex:0 0 auto;" + "Opacity : 0.2")
+        gridbox.setAttribute("Style", "border:0.5px solid black;box-sizing:border-box;flex:0 0 auto;" + "Opacity : 0.2")
         gridbox.style.height = calc + "px"
         gridbox.style.width = calc + "px"
         gridbox.classList.add("gridbox", i)
